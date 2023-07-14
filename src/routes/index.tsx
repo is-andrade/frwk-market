@@ -2,13 +2,21 @@ import React from 'react';
 import { Route, Routes } from 'react-router-dom';
 import HomeScreen from '../pages/HomeScreen';
 import Auth from '../pages/Auth';
+import { useAuth } from '../contexts/Auth';
+import Protected from '../components/Protected';
 
 const AppRoutes = () => {
+  const {user} = useAuth();
+
   return (
-      <Routes>
-        <Route path="/" Component={HomeScreen}/>
-        <Route path="/login" Component={Auth}/>
-      </Routes>
+    <Routes>
+      <Route path="/" element={(
+        <Protected isSignedIn={Boolean(user?.username)}>
+          <HomeScreen/>
+        </Protected>
+      )}/>
+      <Route path="/login" Component={Auth}/>
+    </Routes>
   );
 };
 
