@@ -6,12 +6,12 @@ import { useAuth } from '../contexts/Auth';
 import Protected from '../components/Protected';
 
 const AppRoutes = () => {
-  const {user} = useAuth();
+  const {isAuthenticated} = useAuth();
 
   return (
     <Routes>
       <Route path="/" element={(
-        <Protected isSignedIn={Boolean(user?.username)}>
+        <Protected isSignedIn={isAuthenticated}>
           <HomeScreen/>
         </Protected>
       )}/>

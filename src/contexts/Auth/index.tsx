@@ -4,12 +4,12 @@ import { useNavigate } from "react-router-dom";
 
 interface User {
   id: string;
-  username: string;
+  email: string;
   name: string;
 }
 
 interface AuthtContext {
-  user?: User;
+  isAuthenticated: boolean;
   login: (data: any) => void;
   logout: () => void;
 }
@@ -18,36 +18,31 @@ interface AuthtContextProps {
 }
 
 const AuthContext = createContext<AuthtContext>({
-  user: undefined,
+  isAuthenticated: false,
   login: () => null,
   logout: () => null
 });
 
 
 export const AuthProvider = ({ children }: AuthtContextProps) => {
-  const [user, setUser] = useState<User>();
+  const [isAuthenticated, setisAuthenticated] = useState(false);
   const navigate = useNavigate();
 
-  // call this function when you want to authenticate the user
   const login = async (data: User) => {
-    setUser(data);
+    setisAuthenticated(true)
     navigate("/");
   };
 
-  // call this function to sign out logged in user
   const logout = () => {
-    setUser(undefined);
+    setisAuthenticated(false);
     navigate("/login", { replace: true });
   };
 
-  const value = useMemo(
-    () => ({
-      user,
+  const value = {
       login,
-      logout
-    }),
-    [user]
-  );
+      logout,
+      isAuthenticated
+    };
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
 };
 

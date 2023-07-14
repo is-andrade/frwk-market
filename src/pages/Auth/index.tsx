@@ -1,12 +1,14 @@
 import React, { useState } from 'react';
+import { useAuth } from '../../contexts/Auth';
 
 const Auth = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const {login} = useAuth();
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    console.log(`Email: ${email}, Password: ${password}`);
+    login(email);
   };
 
   return (
