@@ -1,8 +1,15 @@
 import React from 'react';
+import { twMerge } from 'tailwind-merge';
 
-const CardPrice = ({price}: {price: number}) => {
+interface CardPriceProps extends React.HTMLAttributes<HTMLSpanElement>{
+  price: number;
+}
+
+const CardPrice = ({price, ...rest}: CardPriceProps) => {
   return (
-    <span className={'text-xl font-semibold'}>${price}</span>
+    <span className={twMerge('text-xl min-w-[100px] text-center font-semibold', rest.className)}>
+      ${price}
+    </span>
   )
 }
 

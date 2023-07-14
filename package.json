@@ -12,6 +12,7 @@
     "format": "prettier - write src/**/*.{ts,tsx,} - config .prettierrc.json"
   },
   "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^6.4.0",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
@@ -19,10 +20,13 @@
     "@types/node": "^16.18.38",
     "@types/react": "^18.2.15",
     "@types/react-dom": "^18.2.7",
+    "decimal.js": "^10.4.3",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-icons": "^4.10.1",
     "react-router-dom": "^6.14.1",
     "react-scripts": "5.0.1",
+    "tailwind-merge": "^1.13.2",
     "web-vitals": "^2.1.4"
   },
   "eslintConfig": {

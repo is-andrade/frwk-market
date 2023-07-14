@@ -1,10 +1,13 @@
-// <h2 className={'font-semibold text-2xl'}>{title}</h2>
-
 import React from 'react';
+import { twMerge } from 'tailwind-merge';
 
-const CardTitle = ({title}: {title: string}) => {
+interface CardTitleProps extends React.HTMLAttributes<HTMLHeadingElement>{
+  title: string;
+}
+
+const CardTitle = ({title, ...rest}: CardTitleProps) => {
   return (
-    <h2 className={'font-semibold text-2xl'}>{title}</h2>
+    <h2 className={twMerge('font-semibold text-2xl', rest.className)}>{title}</h2>
   )
 }
 

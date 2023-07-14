@@ -1,5 +1,6 @@
 import React from 'react';
 import { useShoppingCart } from '../../contexts/ShoppingCart';
+import { FaMinusSquare, FaPlusSquare } from 'react-icons/fa';
 
 interface CardButtonProps {
   id: number;
@@ -23,25 +24,25 @@ const CardButton = ({quantity, id}: CardButtonProps) => {
           Add to cart
         </button>
       ) : (
-        <div className={'flex w-full items-center justify-between'}>
+        <div className={'flex min-h-[40px] min-w-[100px] items-center justify-between'}>
           <button
             className={
-              'bg-green-700 hover:bg-green-900 text-white font-bold py-1 px-3 rounded-lg text-2xl'
+              ' text-white font-bold  rounded-lg'
             }
             onClick={() => { decrementQuantity(id)}}
           >
-            -
+            <FaMinusSquare color={'green-700'} size={32} className={'text-green-700 hover:text-green-900'} />
           </button>
           <div className={'flex justify-center'}>
             <span className={'text-xl w-full font-semibold'}>{quantity}</span>
           </div>
           <button
             className={
-              'bg-green-700 hover:bg-green-900 text-white font-bold h-12 rounded-lg text-2xl'
+              ' text-white font-bold  rounded-lg'
             }
             onClick={() => { incrementQuantity(id)}}
           >
-            +
+            <FaPlusSquare color={'green-700'} size={32} className={'text-green-700 hover:text-green-900'} />
           </button>
         </div>
       )}

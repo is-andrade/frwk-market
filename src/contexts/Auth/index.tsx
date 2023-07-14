@@ -10,7 +10,7 @@ interface User {
 
 interface AuthtContext {
   isAuthenticated: boolean;
-  login: (data: any) => void;
+  login: (email: string) => void;
   logout: () => void;
 }
 interface AuthtContextProps {
@@ -25,15 +25,17 @@ const AuthContext = createContext<AuthtContext>({
 
 
 export const AuthProvider = ({ children }: AuthtContextProps) => {
-  const [isAuthenticated, setisAuthenticated] = useState(false);
+  const [isAuthenticated, setisAuthenticated] = useState(Boolean(localStorage.getItem("user-email")));
   const navigate = useNavigate();
 
-  const login = async (data: User) => {
+  const login = async (email: string) => {
     setisAuthenticated(true)
+    localStorage.setItem("user-email", email);
     navigate("/");
   };
 
   const logout = () => {
+    localStorage.removeItem("user-email");
     setisAuthenticated(false);
     navigate("/login", { replace: true });
   };
