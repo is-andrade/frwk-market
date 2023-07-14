@@ -1,48 +1,27 @@
 import React from 'react';
+import TopBar from '../../components/TopBar';
 import ProductCard from '../../components/ProductCard';
-import { Product } from '../../common/types';
-
-// apple, pear, banana, pineapple and mango.
-const products: Product[] = [
-  {
-    title: 'Apple',
-    description: 'A red apple',
-    price: 1.99,
-    image: 'https://healthjade.com/wp-content/uploads/2017/10/apple-fruit.jpg',
-  },
-  {
-    title: 'Pear',
-    description: 'A green pear',
-    price: 2.99,
-    image: 'https://i.pinimg.com/736x/af/bf/64/afbf6429e91a83229edea43375a58312.jpg',
-  },
-  {
-    title: 'Banana',
-    description: 'A yellow banana',
-    price: 3.99,
-    image: 'https://i.pinimg.com/originals/b8/39/3c/b8393ccd0f271772cc7d4796857637a9.jpg',
-  },
-  {
-    title: 'Pineapple',
-    description: 'A yellow pineapple',
-    price: 4.99,
-    image: 'https://i.pinimg.com/736x/ee/ce/bd/eecebd862d409d643026722f772c3a81.jpg',
-  },
-  {
-    title: 'Mango',
-    description: 'A yellow mango',
-    price: 5.99,
-    image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQhSYL9eFqAQ1c2L1cs_unuhOdaTM_wL6UoXSwuRclj6Z0w2bFkUd91cKHuiWQSLKnB-cg&usqp=CAU',
-  }
-  ]
+import { useShoppingCart } from '../../contexts/ShoppingCart';
 
 const HomeScreen = () => {
+  const {cart} = useShoppingCart();
 
   return (
-    <div className={"flex flex-wrap gap-4 items-center ma justify-center"}>
-      {products.map((product) => (
-        <ProductCard   key={product.title} product={product} />
-      ))}
+    <div className={"flex flex-col items-center justify-center"}>
+      <TopBar/>
+      <div className={"flex items-center justify-center pt-24"}>
+        <h1 className={"text-4xl font-semibold"}>Products</h1>
+      </div>
+      <div className={"flex flex-wrap gap-4 items-center justify-center pt-8"}>
+        {cart.map(({title, price, quantity, image,id}) => (
+          <ProductCard.Root key={id}>
+            <ProductCard.Title title={title}/>
+            <ProductCard.Picture src={image} alt={title} className={"object-contain h-32 w-32"}/>
+            <ProductCard.Price price={price}/>
+            <ProductCard.Button quantity={quantity} id={id}/>
+          </ProductCard.Root>
+        ))}
+      </div>
     </div>
   );
 }
