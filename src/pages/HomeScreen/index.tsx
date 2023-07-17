@@ -4,19 +4,20 @@ import ProductCard from '../../components/ProductCard';
 import { useShoppingCart } from '../../contexts/ShoppingCart';
 
 const HomeScreen = () => {
-  const {cart} = useShoppingCart();
+  const {cart, filter} = useShoppingCart();
+  const filteredCart = cart.filter(({title}) => title.toLowerCase().includes(filter.toLowerCase()));
 
   return (
-    <div className={"flex flex-col items-center justify-center"}>
+    <div className={'flex flex-col items-center justify-center'}>
       <TopBar/>
-      <div className={"flex items-center justify-center pt-24"}>
-        <h1 className={"text-4xl font-semibold"}>Products</h1>
+      <div className={'flex items-center justify-center pt-24'}>
+        <h1 className={'text-4xl font-semibold'}>Products</h1>
       </div>
-      <div className={"flex flex-wrap gap-4 items-center justify-center pt-8"}>
-        {cart.map(({title, price, quantity, image,id}) => (
-          <ProductCard.Root key={id}>
+      <div className={'flex flex-wrap items-center justify-center gap-4 pt-8'}>
+        {filteredCart.map(({title, price, quantity, image, id}) => (
+          <ProductCard.Root key={id} className={'hover:scale-110'}>
             <ProductCard.Title title={title}/>
-            <ProductCard.Picture src={image} alt={title} className={"object-contain h-32 w-32"}/>
+            <ProductCard.Picture src={image} alt={title} className={'h-32 w-32 object-contain'}/>
             <ProductCard.Price price={price}/>
             <ProductCard.Button quantity={quantity} id={id}/>
           </ProductCard.Root>
@@ -24,6 +25,6 @@ const HomeScreen = () => {
       </div>
     </div>
   );
-}
+};
 
 export default HomeScreen;

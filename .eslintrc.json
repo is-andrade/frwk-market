@@ -1,24 +1,36 @@
 {
-    "env": {
-        "browser": true,
-        "es2021": true
-    },
-    "extends": [
-        "standard-with-typescript",
-        "plugin:react/recommended",
-        "prettier"
+  "env": {
+    "browser": true,
+    "es2021": true
+  },
+  "extends": [
+    "airbnb-typescript",
+    "plugin:tailwindcss/recommended",
+    "prettier"
+  ],
+  "parserOptions": {
+    "ecmaVersion": "latest",
+    "sourceType": "module",
+    "project": [
+      "./tsconfig.json"
     ],
-    "parserOptions": {
-        "ecmaVersion": "latest",
-        "sourceType": "module",
-        "project": ["./tsconfig.json"]
-    },
-    "plugins": [
-        "react"
-    ],
-    "rules": {
-        "@typescript-eslint/explicit-function-return-type": 0,
-        "@typescript-eslint/consistent-type-imports": 0,
-        "@typescript-eslint/no-unused-vars": 1
+    "ecmaFeatures": {
+      "jsx": true
     }
+  },
+  "rules": {
+    "@typescript-eslint/explicit-function-return-type": 0,
+    "@typescript-eslint/consistent-type-imports": 0,
+    "@typescript-eslint/no-unused-vars": 1,
+    "no-multiple-empty-lines": 2
+  },
+  "plugins": [
+    "react",
+    "import"
+  ],
+  "settings": {
+    "react": {
+      "version": "detect"
+    }
+  }
 }

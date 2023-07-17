@@ -1,15 +1,16 @@
-import React from 'react'
-import { Navigate } from 'react-router-dom'
+import React from 'react';
+import { Navigate } from 'react-router-dom';
 
 interface IProtectedProps {
   isSignedIn: boolean
   children: React.ReactNode
 }
 
-function Protected({ isSignedIn, children }: IProtectedProps) {
+function Protected({isSignedIn, children}: IProtectedProps) {
   if (isSignedIn) {
-    return children
+    return children;
   }
-  return <Navigate to="/login" replace />
+  return <Navigate to="/login" replace/>;
 }
-export default Protected
+
+export default Protected;
