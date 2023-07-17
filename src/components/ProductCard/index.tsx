@@ -10,6 +10,6 @@ const ProductCard = {
   Picture: CardPicture,
   Price: CardPrice,
   Button: CardButton,
-}
+};
 
 export default ProductCard;
