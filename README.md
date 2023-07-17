@@ -1,5 +1,9 @@
 # frwk-market
 
+###Live demo
+https://frwk-market.surge.sh/
+
+
 Demo:
 
 ![](demo.gif)
@@ -15,7 +19,7 @@ Responsiveness:
 - Authentication is mocked, but I've implemented a fake login page. Any email and password will work.
 - I've used the localStorage to save the user data as if this was a token.
 - I've used the react-router-dom to manage public/protected routes.
-- I've used the jspdf to generate the PDF receipt.
+- I've used the jspdf to generate the PDF receipt. (Didn't had time to make the pdf layoutglg, but it works)
 
 ## Project definition:
 Develop an app, like an e-commerce, using React.JS to sell apple, pear, banana, pineapple, and mango.
