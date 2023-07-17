@@ -17,6 +17,7 @@ export interface ShoppingCartContextType {
   showCart: () => void;
   setFilter: (filter: string) => void;
   filter: string;
+  cleanCart: () => void;
 }
 
 interface ShoppingCartProviderProps {
@@ -41,6 +42,8 @@ export const ShoppingCartContext = createContext<ShoppingCartContextType>({
   setFilter: () => {
   },
   filter: '',
+  cleanCart: () => {
+  }
 });
 
 export const ShoppingCartProvider = ({children}: ShoppingCartProviderProps) => {
@@ -60,12 +63,15 @@ export const ShoppingCartProvider = ({children}: ShoppingCartProviderProps) => {
     }
   };
 
+  const cleanCart = () => {
+    setCart(productsMock);
+  };
+  
   const removeFromCart = (product: Product) => {
     setCart((prevCart) => prevCart.filter((item) => item.id !== product.id));
   };
 
   const incrementQuantity = (productId: number) => {
-    console.log('incrementQuantity', productId);
     setCart((prevCart) =>
       prevCart.map((item) => item.id === productId ? {...item, quantity: item.quantity + 1} : item,
       ),
@@ -100,7 +106,8 @@ export const ShoppingCartProvider = ({children}: ShoppingCartProviderProps) => {
         showCart,
         isCartVisible,
         setFilter,
-        filter
+        filter,
+        cleanCart,
       }}
     >
       {children}

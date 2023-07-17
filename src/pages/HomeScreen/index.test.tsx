@@ -29,6 +29,7 @@ const contextValue: ShoppingCartContextType = {
   addToCart: jest.fn(),
   setFilter: jest.fn(),
   filter: '',
+  cleanCart: jest.fn(),
 };
 
 describe('HomeScreen', () => {
@@ -52,19 +53,4 @@ describe('HomeScreen', () => {
     expect(productCards).toHaveLength(cart.length);
   });
 
-
-  // it('should increment count when increment button is clicked', async () => {
-  //   const quantity = 5;
-  //   render(
-  //   <ShoppingCartContext.Provider value={{...contextValue, cart: [cart[0]]}}>
-  //     <HomeScreen />
-  //   </ShoppingCartContext.Provider>
-  //   );
-  //   const increaseButton = screen.getByText(/Add to cart/i);
-  //   expect(increaseButton).toBeInTheDocument();
-  //   await fireEvent.click(increaseButton);
-  //   await screen.getByText(quantity + 1);
-  //   const productCount = await screen.getByText(quantity + 1);
-  //   expect(productCount).toBeInTheDocument();
-  // });
 });

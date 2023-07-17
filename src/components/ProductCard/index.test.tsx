@@ -39,6 +39,7 @@ describe('ProductCard', () => {
     addToCart: jest.fn(),
     setFilter: jest.fn(),
     filter: '',
+    cleanCart: jest.fn(),
   };
 
   const renderProductCard = ({id, title, image, price, quantity}: Product, context: ShoppingCartContextType) => (
@@ -98,7 +99,6 @@ describe('ProductCard', () => {
     render(renderProductCard({...product, quantity}, {...contextValue, incrementQuantity}));
     const addToCartButton = screen.getByText(/Add to cart/i);
     await fireEvent.click(addToCartButton);
-    // const productCount = await screen.getByText(quantity + 1);
     expect(incrementQuantity).toBeCalledTimes(1);
   });
 
@@ -108,7 +108,6 @@ describe('ProductCard', () => {
     render(renderProductCard({...product, quantity}, {...contextValue, incrementQuantity}));
     const increaseButton = screen.getByTestId('increment-quantity');
     await fireEvent.click(increaseButton);
-    // const productCount = await screen.getByText(quantity + 1);
     expect(incrementQuantity).toBeCalledTimes(1);
   });
 

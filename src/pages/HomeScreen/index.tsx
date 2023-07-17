@@ -10,7 +10,7 @@ const HomeScreen = () => {
   return (
     <div className={'flex flex-col items-center justify-center'}>
       <TopBar/>
-      <div className={'flex items-center justify-center pt-24'}>
+      <div className={'flex items-center justify-center pt-40 sm:pt-28'}>
         <h1 className={'text-4xl font-semibold'}>Products</h1>
       </div>
       <div className={'flex flex-wrap items-center justify-center gap-4 pt-8'}>

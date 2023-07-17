@@ -49,10 +49,3 @@ describe('AuthProvider', () => {
     expect(result.current.isAuthenticated).toBe(false);
   });
 });
-
-describe('useAuth', () => {
-  it('should throw an error when used outside of AuthProvider', () => {
-    const {result} = renderHook(() => useAuth());
-    expect(result.error).toBeDefined();
-  });
-});

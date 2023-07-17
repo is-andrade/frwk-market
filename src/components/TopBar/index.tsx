@@ -30,7 +30,8 @@ const TopBar = () => {
         </div>
         <div className={'flex justify-end'}>
           <div
-            className={'relative left-[39px] top-[-9px] flex h-6 w-6 items-center justify-center rounded-full bg-green-700 text-sm font-bold text-white'}>
+            onClick={showCart}
+            className={'relative left-[39px] top-[-9px] flex h-6 w-6 cursor-pointer items-center justify-center rounded-full bg-green-700 text-sm font-bold text-white'}>
             {productsQuantity}
           </div>
           <button className="pr-2" onClick={showCart} aria-label="logout">
